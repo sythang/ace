@@ -1,0 +1,38 @@
+default: &default
+ adapter: postgresql
+ encoding: unicode
+ pool: 5
+
+development:
+ <<: *default
+ database: ace_test_development
+ username: postgres
+ password: postgres
+ host: localhost
+ port: 5432
+
+
+staging:
+ <<: *default
+ # database: ace_test_staging
+ # username: postgres
+ # password: postgres
+ # host: localhost
+ # port: 5432
+
+
+test:
+ <<: *default
+ database: ace_test_test
+ username: postgres
+ password: postgres
+ host: localhost
+ port: 5432
+
+production:
+ <<: *default
+ database: ace_test_production
+ # username: postgres
+ # password: postgres
+ # host: localhost
+ # port: 5432
