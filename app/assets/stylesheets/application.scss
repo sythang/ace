@@ -52,3 +52,22 @@ body > .container{
 .text-muted {
   color: #777;
 }
+
+.nested-fields {
+	margin-bottom: 10px;
+	.option-count{
+		padding-left: 20px;
+		margin-top: 7px;
+	}
+	.checkbox, .btn-remove {
+		margin-top: 7px;
+	}
+	.form-inline{
+		.form-group{
+			width: 100%;
+			input.form-control{
+				width: 100%;
+			}
+		}
+	}
+}

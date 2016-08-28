@@ -1,0 +1,22 @@
+<div class="nested-fields form-inline">
+	<div class="row">
+		<div class="col-md-1">
+			<label class="option-count">1</label>
+		</div>
+		<div class="col-md-7">
+			<div class="form-group">
+				<%= f.text_field :content, class: "form-control", placeholder: "Enter content" %>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="checkbox">
+				<label>
+					<%= f.check_box :is_correct_answer %> Correct Answer
+				</label>
+			</div>
+		</div>
+		<div class="col-md-2 btn-remove">
+			<%= link_to_remove_association '<span class = "glyphicon glyphicon-trash">'.html_safe, f %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="nested-fields">
+	<%= f.input :label %>
+	<%= f.input :description, as: :text %>
+	<h5>Options</h5>
+	<div id="options">
+		<%= f.simple_fields_for :options, html: {class: 'form-horizontal'} do |option| %>
+      <%= render 'option_fields', f: option %>
+	    <div class="links">
+	    	<%= link_to_add_association 'add option', f, :options %>
+	    </div>
+    <% end %>
+	</div>
+	<%= link_to_remove_association 'Remove Option', f %>
+</div>

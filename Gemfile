@@ -41,6 +41,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'enumerize'
+gem 'cocoon'
 
 
 group :development, :test do
