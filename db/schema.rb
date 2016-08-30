@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828092642) do
+ActiveRecord::Schema.define(version: 20160829045520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_questions", force: :cascade do |t|
+    t.integer  "answer_id"
+    t.integer  "question_id"
+    t.integer  "option_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["answer_id"], name: "index_answer_questions_on_answer_id", using: :btree
+    t.index ["option_id"], name: "index_answer_questions_on_option_id", using: :btree
+    t.index ["question_id"], name: "index_answer_questions_on_question_id", using: :btree
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "test_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_answers_on_test_id", using: :btree
+    t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
+  end
 
   create_table "options", force: :cascade do |t|
     t.string   "content"
@@ -57,6 +77,8 @@ ActiveRecord::Schema.define(version: 20160828092642) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "api_token"
+    t.index ["api_token"], name: "index_users_on_api_token", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

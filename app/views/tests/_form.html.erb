@@ -1,4 +1,12 @@
 <%= simple_form_for @test do |f| %>
+	<div class="header">
+	  	<div class="col-md-6">
+	  		<%= link_to '<span class="glyphicon glyphicon-arrow-left"></span> Back'.html_safe, tests_path, class: 'btn btn-primary' %>
+	  		<button class="btn btn-primary" type="submit">
+	  			<span class="glyphicon glyphicon-floppy-save"></span> Save
+	  		</button>
+	  	</div>
+	</div>
 	<%= f.hidden_field :teacher_id, value: current_user.id %> 
   <%= render :partial => 'shared/error_messages', :locals => { :target => @test } %>
   <%= f.input :name %>
@@ -8,10 +16,7 @@
 	<div id="questions">
 		<%= f.simple_fields_for :questions do |question| %>
       <%= render 'question_fields', f: question %>
-	    <div class="links">
-	    	<%= link_to_add_association 'add question', f, :questions %>
-	    </div>
     <% end %>
+    <%= link_to_add_association '<span class="glyphicon glyphicon-plus"></span> Question'.html_safe, f, :questions, { class: 'btn btn-primary' } %>
 	</div>
-  <%= f.button :submit %>
 <% end %>

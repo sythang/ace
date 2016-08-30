@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: [:show, :edit, :update, :destroy]
+  before_action :set_test, only: [:edit, :update, :destroy]
 
   # GET /tests
   # GET /tests.json
@@ -7,15 +7,9 @@ class TestsController < ApplicationController
     @tests = Test.page(params[:page])
   end
 
-  # GET /tests/1
-  def show
-  end
-
   # GET /tests/new
   def new
     @test = Test.new
-    @question = @test.questions.build
-    @option = @question.options.build
   end
 
   # GET /tests/1/edit
@@ -27,7 +21,7 @@ class TestsController < ApplicationController
     @test = Test.new(test_params)
 
     if @test.save
-      redirect_to @test, notice: 'Test was successfully created.'
+      redirect_to tests_path, notice: 'Test was successfully created.'
     else
       render :new
     end
@@ -36,7 +30,7 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1
   def update
     if @test.update(test_params)
-      redirect_to @test, notice: 'Test was successfully updated.'
+      redirect_to tests_path, notice: 'Test was successfully updated.'
     else
       render :edit
     end
@@ -52,7 +46,7 @@ class TestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
-      @test = Test.find(params[:id])
+      @test = Test.includes(questions: [:options]).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

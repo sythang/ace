@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   extend Enumerize
+  scope :student, -> {where(role: :student)}
+  has_many :answers
   validates_presence_of :name
   enumerize :role, in: [:student, :teacher], default: :student
+
+  def generate_api_token
+    loop do
+      self.api_token = SecureRandom.base64(64)
+      break unless self.class.find_by(api_token: api_token)
+    end
+  end
 end

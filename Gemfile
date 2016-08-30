@@ -42,13 +42,16 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'enumerize'
 gem 'cocoon'
-
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem "better_errors"
   gem 'binding_of_caller'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'database_cleaner', '~> 1.5.1'
 end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

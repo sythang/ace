@@ -1,14 +1,19 @@
 <div class="nested-fields">
-	<%= f.input :label %>
+	<div class="row">
+		<div class="col-sm-11">
+			<%= f.input :label %>
+		</div>
+		<div class="col-sm-1" style="margin-top: 30px">
+			<%= link_to_remove_association '<span class = "glyphicon glyphicon-trash">'.html_safe, f %>
+		</div>
+	</div>
+	
 	<%= f.input :description, as: :text %>
 	<h5>Options</h5>
 	<div id="options">
 		<%= f.simple_fields_for :options, html: {class: 'form-horizontal'} do |option| %>
       <%= render 'option_fields', f: option %>
-	    <div class="links">
-	    	<%= link_to_add_association 'add option', f, :options %>
-	    </div>
     <% end %>
+    <%= link_to_add_association '<span class="glyphicon glyphicon-plus"></span> Option'.html_safe, f, :options, { class: 'btn btn-primary' } %>
 	</div>
-	<%= link_to_remove_association 'Remove Option', f %>
 </div>
