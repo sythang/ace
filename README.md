@@ -1,24 +1,33 @@
-# README
+###ACE - Test Example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
++ Installation
 
-Things you may want to cover:
+```
+git clone git@github.com:sythang/ace.git
+cd ace
+bundle install
+bundle exec rake db:create & rake db:migrate
+bundle exec rake db:seed
+bundle exec rspec spec/
+```
 
-* Ruby version
 
-* System dependencies
++ Documentation API
 
-* Configuration
+URL: https://domain.com/documentation
 
-* Database creation
+![](https://s14.postimg.org/3ybilq54x/Screen_Shot_2016_08_31_at_12_29_23_AM.png)
 
-* Database initialization
 
-* How to run the test suite
++ Library
+ - Database : Postgresql
+ - Devise (Authentication)
+ - Grape
+ - Grape Entities
+ - Grape Swagger
+ - Rspec
+ - Twitter Bootstrap
+ - Simple Form
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
++ Duration Time to complete project : 12 hours
+ 

@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   extend Enumerize
   scope :student, -> {where(role: :student)}
-  has_many :answers
+  has_many :answers, dependent: :destroy
+  has_many :tests, foreign_key: 'teacher_id', dependent: :destroy
   validates_presence_of :name
   enumerize :role, in: [:student, :teacher], default: :student
 
